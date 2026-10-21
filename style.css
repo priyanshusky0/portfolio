@@ -519,34 +519,6 @@ a { color: inherit; }
 }
 .text-link:hover { background-size: 0% 1px; background-position: right bottom; }
 
-.wins-more {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  border-top: 1px solid var(--line);
-}
-.wins-more li {
-  display: grid;
-  grid-template-columns: 7rem 1fr;
-  grid-template-areas: "place name" "place detail";
-  gap: 0.15rem 1.5rem;
-  align-content: start;
-  padding: 2rem 1.5rem 0 0;
-}
-.wins-more li + li { padding-left: 1.5rem; border-left: 1px solid var(--line); }
-.win-place {
-  grid-area: place;
-  font-size: clamp(2rem, 3.5vw, 3rem);
-  font-weight: 300;
-  font-variation-settings: "wdth" 80;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  color: var(--red);
-}
-.win-name { grid-area: name; font-weight: 600; font-size: 1.1rem; }
-.win-detail { grid-area: detail; color: var(--smoke); font-size: 0.95rem; }
-
 /* Lightbox for photos and certificates */
 .lightbox {
   width: min(94vw, 1200px);
@@ -681,10 +653,6 @@ a { color: inherit; }
 
   .prs a { grid-template-columns: 1fr auto; gap: 0.35rem 1rem; }
   .pr-repo { grid-column: 1 / -1; }
-  .wins-more { grid-template-columns: 1fr; }
-  .wins-more li, .wins-more li + li { padding-left: 0; border-left: 0; }
-  .wins-more li { grid-template-columns: 5.5rem 1fr; padding-bottom: 1.5rem; }
-  .wins-more li + li { border-top: 1px solid var(--line); }
 }
 
 @media (prefers-reduced-motion: reduce) {
