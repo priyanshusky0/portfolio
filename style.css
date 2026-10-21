@@ -529,7 +529,9 @@ a { color: inherit; }
 .shot-sih { grid-column: 7 / span 6; margin-top: 8rem; }
 .shot-lab { grid-column: 2 / span 4; margin-top: 3rem; }
 .shot-run { grid-column: 8 / span 4; margin-top: 2rem; }
-.shot-ugc { grid-column: 4 / span 6; margin-top: 3rem; }
+.shot-ugc { grid-column: 1 / span 7; grid-row: 3; align-self: center; }
+.shot-afsb { grid-column: 9 / span 3; grid-row: 3; margin-top: 3rem; }
+.shot-afsb .frame { aspect-ratio: 2 / 5; }
 .shot figcaption {
   display: flex;
   flex-direction: column;
@@ -702,7 +704,7 @@ a { color: inherit; }
   .feature, .feature-biomed { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .collage { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .shot-trek, .shot-lab, .shot-sih, .shot-ugc, .shot-run { grid-column: auto; margin-top: 0; }
+  .shot-trek, .shot-lab, .shot-sih, .shot-ugc, .shot-run, .shot-afsb { grid-column: auto; grid-row: auto; margin-top: 0; align-self: start; }
   .shot-sih, .shot-ugc { grid-column: 1 / -1; }
   .feature-flip .frame { order: 0; }
   .feature-biomed .frame-tall { max-width: 32rem; }
