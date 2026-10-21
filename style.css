@@ -1,11 +1,11 @@
 :root {
-  --ink: #140a0c;
-  --panel: #1e1013;
-  --line: rgba(237, 230, 227, 0.12);
-  --bone: #ede6e3;
-  --smoke: #a39598;
-  --oxblood: #6e0f20;
-  --red: #e0243f;
+  --ink: #0f1311;
+  --panel: #161c19;
+  --line: rgba(232, 236, 230, 0.12);
+  --bone: #ecebe6;
+  --smoke: #9ba39e;
+  --deep: #1f3329;
+  --accent: #a8c79a;
 
   --font: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --gutter: clamp(1rem, 4vw, 3.5rem);
@@ -37,7 +37,7 @@ img { display: block; max-width: 100%; }
 a { color: inherit; }
 
 :focus-visible {
-  outline: 2px solid var(--red);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
@@ -102,14 +102,14 @@ a { color: inherit; }
   isolation: isolate;
 }
 
-/* Red light spill behind the photo, like the sign it was taken under */
+/* Soft daylight behind the portrait */
 .hero-bg {
   position: absolute;
   inset: -12%;
   z-index: 0;
   background:
-    radial-gradient(ellipse 34% 46% at 60% 42%, rgba(224, 36, 63, 0.42), transparent 70%),
-    radial-gradient(ellipse 60% 70% at 62% 45%, #3d0b16, transparent 75%),
+    radial-gradient(ellipse 30% 42% at 58% 55%, rgba(214, 226, 216, 0.16), transparent 70%),
+    radial-gradient(ellipse 60% 70% at 58% 60%, #1c2a23, transparent 75%),
     var(--ink);
 }
 /* Vignette and a fade into the page colour at the bottom */
@@ -119,7 +119,7 @@ a { color: inherit; }
   inset: 0;
   z-index: 0;
   background:
-    radial-gradient(ellipse at 62% 40%, transparent 30%, rgba(20, 10, 12, 0.75) 80%),
+    radial-gradient(ellipse at 58% 50%, transparent 35%, rgba(15, 19, 17, 0.7) 85%),
     linear-gradient(to bottom, transparent 60%, var(--ink));
   pointer-events: none;
 }
@@ -129,7 +129,7 @@ a { color: inherit; }
   z-index: 1;
   left: var(--gutter);
   right: var(--gutter);
-  bottom: clamp(1.5rem, 5vh, 3rem);
+  top: clamp(4.5rem, 11vh, 7rem);
   margin: 0;
   font-size: clamp(3.6rem, 13.2vw, 15rem);
   font-weight: 800;
@@ -150,10 +150,10 @@ a { color: inherit; }
 .hero-figure {
   position: absolute;
   z-index: 2;
-  bottom: -5%;
-  left: 58%;
-  height: 95%;
-  aspect-ratio: 451 / 1092;
+  bottom: 0;
+  left: 56%;
+  height: 76%;
+  aspect-ratio: 955 / 854;
   transform: translateX(-50%);
 }
 .hero-me {
@@ -179,7 +179,7 @@ a { color: inherit; }
   height: 8px;
   border-radius: 50%;
   background: var(--bone);
-  box-shadow: 0 0 0 4px rgba(224, 36, 63, 0.35);
+  box-shadow: 0 0 0 4px rgba(168, 199, 154, 0.35);
 }
 .callout-line {
   position: absolute;
@@ -339,8 +339,8 @@ a { color: inherit; }
   height: 0.5rem;
   margin-right: 0.5rem;
   border-radius: 50%;
-  background: var(--red);
-  box-shadow: 0 0 0 4px rgba(224, 36, 63, 0.25);
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(168, 199, 154, 0.25);
 }
 .role ul {
   margin: 0 0 1.25rem;
@@ -352,7 +352,7 @@ a { color: inherit; }
   position: relative;
   padding-left: 1.4rem;
   margin-bottom: 0.6rem;
-  color: #d9cdd0;
+  color: #d3d7d1;
 }
 .role li::before {
   content: "";
@@ -361,7 +361,7 @@ a { color: inherit; }
   top: 0.75em;
   width: 0.6rem;
   height: 1px;
-  background: var(--red);
+  background: var(--accent);
 }
 .tags { margin: 0; color: var(--smoke); font-size: 0.9rem; }
 
@@ -406,9 +406,9 @@ a { color: inherit; }
   border-radius: 4px;
   transition: border-color 0.3s, transform 0.5s var(--ease);
 }
-.card:hover { border-color: rgba(224, 36, 63, 0.6); }
+.card:hover { border-color: rgba(168, 199, 154, 0.6); }
 .card:first-of-type {
-  background: var(--oxblood);
+  background: var(--deep);
   border-color: transparent;
 }
 .card-kind {
@@ -416,7 +416,7 @@ a { color: inherit; }
   color: var(--smoke);
   font-size: 0.9rem;
 }
-.card:first-of-type .card-kind { color: #e8b7c0; }
+.card:first-of-type .card-kind { color: #b9cdb0; }
 .card h3 {
   margin: auto 0 1rem;
   padding-top: 4rem;
@@ -429,7 +429,7 @@ a { color: inherit; }
 .card h3 a { text-decoration: none; }
 .card h3 a::after { content: ""; position: absolute; inset: 0; }
 .card { position: relative; }
-.card p:not(.card-kind) { margin: 0 0 1.25rem; color: #d6c9cc; }
+.card p:not(.card-kind) { margin: 0 0 1.25rem; color: #cfd3cd; }
 .card .card-stack {
   margin: 0;
   padding-top: 1rem;
@@ -457,10 +457,10 @@ a { color: inherit; }
 .pr-title {
   font-size: clamp(1.05rem, 1.6vw, 1.3rem);
   font-weight: 500;
-  color: #e6dcde;
+  color: #e2e4df;
 }
 .pr-state { font-size: 0.88rem; color: var(--smoke); }
-.pr-state.is-open { color: var(--red); }
+.pr-state.is-open { color: var(--accent); }
 
 /* Recognition: photo-led features */
 .feature {
@@ -507,7 +507,7 @@ a { color: inherit; }
 .feature-text p { margin: 0 0 1rem; color: var(--smoke); max-width: 44ch; }
 .feature-text .feature-place {
   margin-bottom: 0.75rem;
-  color: var(--red);
+  color: var(--accent);
   font-weight: 500;
 }
 .feature-biomed .frame-wide { margin-top: 2.5rem; }
@@ -516,7 +516,7 @@ a { color: inherit; }
 .text-link {
   color: var(--bone);
   text-decoration: none;
-  background: linear-gradient(var(--red), var(--red)) left bottom / 100% 1px no-repeat;
+  background: linear-gradient(var(--accent), var(--accent)) left bottom / 100% 1px no-repeat;
   padding-bottom: 0.15rem;
   transition: background-size 0.4s var(--ease);
 }
@@ -556,7 +556,7 @@ a { color: inherit; }
   background: transparent;
   color: var(--bone);
 }
-.lightbox::backdrop { background: rgba(10, 5, 6, 0.9); }
+.lightbox::backdrop { background: rgba(8, 10, 9, 0.92); }
 .lightbox img {
   max-width: 100%;
   max-height: 86vh;
@@ -594,7 +594,7 @@ a { color: inherit; }
   display: inline-block;
   font-size: clamp(1.2rem, 2.6vw, 2rem);
   text-decoration: none;
-  background: linear-gradient(var(--red), var(--red)) left bottom / 100% 2px no-repeat;
+  background: linear-gradient(var(--accent), var(--accent)) left bottom / 100% 2px no-repeat;
   padding-bottom: 0.2rem;
   transition: background-size 0.5s var(--ease);
 }
@@ -637,12 +637,12 @@ a { color: inherit; }
   .nav-home { display: none; }
   .nav { justify-content: flex-end; }
 
-  .hero-figure { left: 50%; height: 74%; bottom: -6%; }
+  .hero-figure { left: 50%; width: 138%; height: auto; bottom: 0; }
   .callout { display: none; }
   .hero-facts {
     position: absolute;
     z-index: 3;
-    top: 4.75rem;
+    top: calc(5rem + 2 * 0.84 * clamp(2.6rem, 12.6vw, 6rem) + 1.5rem);
     left: var(--gutter);
     display: flex;
     flex-direction: column;
@@ -650,16 +650,16 @@ a { color: inherit; }
     margin: 0;
     padding: 0 0 0 0.9rem;
     list-style: none;
-    border-left: 1px solid var(--red);
+    border-left: 1px solid var(--accent);
     font-size: 0.85rem;
     color: var(--smoke);
   }
   .hero-facts strong { color: var(--bone); font-weight: 600; margin-right: 0.35rem; }
   .hero-name {
-    z-index: 3;
+    z-index: 1;
     font-size: clamp(2.6rem, 12.6vw, 6rem);
-    bottom: 1.25rem;
-    text-shadow: 0 0.04em 0.4em rgba(20, 10, 12, 0.5);
+    top: 5rem;
+    text-shadow: 0 0.04em 0.4em rgba(15, 19, 17, 0.5);
   }
 
   .section-head { grid-template-columns: 1fr; }
