@@ -104,6 +104,18 @@ a { color: inherit; }
 .nav ul a { opacity: 0.75; transition: opacity 0.2s; }
 .nav ul a:hover { opacity: 1; }
 
+/* Brand icons (GitHub, LinkedIn) */
+.icon {
+  width: 1em;
+  height: 1em;
+  flex: none;
+  vertical-align: -0.125em;
+}
+.icon-link { display: inline-flex; align-items: center; gap: 0.5em; }
+.nav-icon a { display: inline-flex; padding: 0.2rem; }
+.nav-icon .icon { width: 1.05rem; height: 1.05rem; }
+.pr-repo { display: inline-flex; align-items: center; gap: 0.5em; }
+
 /* Hero */
 .hero {
   position: relative;
