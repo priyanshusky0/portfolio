@@ -9,6 +9,8 @@
 
   const layers = [...document.querySelectorAll(".hero [data-depth]")];
   const nameLines = [...document.querySelectorAll(".hero [data-split]")];
+  const nav = document.querySelector(".nav");
+  const hero = document.querySelector(".hero");
   const projects = document.querySelector(".projects");
   const track = document.querySelector(".projects-track");
   const framed = [...document.querySelectorAll("[data-parallax]")];
@@ -59,6 +61,9 @@
   function update() {
     const y = window.scrollY;
     const vh = window.innerHeight;
+
+    // Show the top bar only after the landing screen has scrolled out of view
+    nav.classList.toggle("is-visible", y > hero.offsetHeight - nav.offsetHeight);
 
     easedX += (pointerX - easedX) * 0.07;
     easedY += (pointerY - easedY) * 0.07;
