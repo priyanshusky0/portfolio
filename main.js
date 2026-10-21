@@ -29,20 +29,36 @@
       send.textContent = "Sending…";
       status.className = "form-status";
       status.textContent = "";
+      const data = new FormData(form);
+      // Give up after 15 seconds so the button never hangs
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 15000);
       try {
         const res = await fetch(form.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
           method: "POST",
           headers: { Accept: "application/json" },
-          body: new FormData(form),
+          body: data,
+          signal: controller.signal,
         });
-        if (!res.ok) throw new Error(res.status);
+        const json = await res.json().catch(() => ({}));
+        if (!res.ok || String(json.success) === "false") throw new Error(json.message || res.status);
         form.reset();
         status.classList.add("is-ok");
         status.textContent = "Message sent. I'll get back to you soon.";
       } catch {
+        // Fall back to the visitor's own email app, with their message filled in
+        const subject = `Portfolio: ${data.get("topic")}, from ${data.get("name")}`;
+        const body = `${data.get("message")}\n\n${data.get("name")}\n${data.get("email")}`;
+        const mailto = `mailto:priyanshu.student18@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         status.classList.add("is-error");
-        status.textContent = "That didn't go through. Email me directly at priyanshu.student18@gmail.com.";
+        status.textContent = "The form service didn't respond. ";
+        const link = document.createElement("a");
+        link.href = mailto;
+        link.className = "text-link";
+        link.textContent = "Send it by email instead";
+        status.append(link);
       } finally {
+        clearTimeout(timer);
         send.disabled = false;
         send.textContent = "Send message";
       }
