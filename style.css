@@ -607,8 +607,10 @@ a { color: inherit; }
 .contact-mail:hover { background-size: 0% 2px; background-position: right bottom; }
 .contact-links {
   display: flex;
-  gap: 2rem;
-  margin: 2rem 0 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9rem;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
