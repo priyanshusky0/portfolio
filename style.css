@@ -652,6 +652,16 @@ a { color: inherit; }
   transition: border-color 0.2s;
 }
 .field textarea { resize: vertical; min-height: 7rem; }
+/* Keep browser autofill on-theme instead of light blue */
+.field input:-webkit-autofill,
+.field input:-webkit-autofill:hover,
+.field input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--bone);
+  caret-color: var(--bone);
+  -webkit-box-shadow: 0 0 0 1000px var(--ink) inset;
+  box-shadow: 0 0 0 1000px var(--ink) inset;
+  transition: background-color 9999s ease 0s;
+}
 .field select { cursor: pointer; }
 .field select option { background: var(--panel); color: var(--bone); }
 .field input:focus,
