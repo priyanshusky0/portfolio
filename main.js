@@ -11,6 +11,24 @@
   const nameLines = [...document.querySelectorAll(".hero [data-split]")];
   const projects = document.querySelector(".projects");
   const track = document.querySelector(".projects-track");
+  const framed = [...document.querySelectorAll("[data-parallax]")];
+
+  // Click a photo or certificate to see it full size
+  const lightbox = document.querySelector(".lightbox");
+  if (lightbox && lightbox.showModal) {
+    const big = lightbox.querySelector("img");
+    document.querySelectorAll("a.zoom").forEach((a) => {
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        const img = a.querySelector("img");
+        big.src = a.getAttribute("href");
+        big.alt = img ? img.alt : a.textContent;
+        lightbox.showModal();
+      });
+    });
+    lightbox.querySelector(".lightbox-close").addEventListener("click", () => lightbox.close());
+    lightbox.addEventListener("click", (e) => { if (e.target === lightbox) lightbox.close(); });
+  }
 
   // Start the load sequence once fonts are in, so the name doesn't reflow
   const start = () => document.body.classList.add("is-loaded");
@@ -53,6 +71,14 @@
       for (const el of nameLines) {
         el.style.translate = `${parseFloat(el.dataset.split) * y * 0.45}px 0`;
       }
+    }
+
+    // Photos slide a little inside their frames as they pass through view
+    for (const img of framed) {
+      const rect = img.parentElement.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > vh) continue;
+      const progress = (vh - rect.top) / (vh + rect.height);
+      img.style.transform = `translate3d(0, ${-progress * 13}%, 0)`;
     }
 
     if (!phone.matches) {
