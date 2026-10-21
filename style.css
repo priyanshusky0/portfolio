@@ -139,6 +139,28 @@ a { color: inherit; }
   text-transform: uppercase;
   color: var(--bone);
 }
+/* Four quick facts, bottom left */
+.hero-facts {
+  position: absolute;
+  z-index: 3;
+  left: var(--gutter);
+  bottom: clamp(1.75rem, 6vh, 3.5rem);
+  width: min(21rem, 30vw);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.98rem;
+}
+.hero-facts li {
+  padding: 0.6rem 0;
+  border-top: 1px solid var(--line);
+  font-weight: 500;
+  color: var(--bone);
+}
+.hero-facts li:first-child { border-top: 0; padding-top: 0; }
+.hero-facts span { color: var(--smoke); font-weight: 400; }
+.hero-facts li:first-child span { color: var(--accent); }
+
 .name-line {
   display: block;
   overflow: hidden;
@@ -162,56 +184,10 @@ a { color: inherit; }
   max-width: none;
 }
 
-/* Callouts: hairlines drawn out from points on the figure to small labels */
-.callout {
-  position: absolute;
-  left: var(--x);
-  top: var(--y);
-  width: 0;
-  height: 0;
-}
-.callout::before {
-  content: "";
-  position: absolute;
-  left: -4px;
-  top: -4px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--bone);
-  box-shadow: 0 0 0 4px rgba(168, 199, 154, 0.35);
-}
-.callout-line {
-  position: absolute;
-  top: 0;
-  width: var(--len);
-  height: 1px;
-  background: rgba(237, 230, 227, 0.5);
-}
-.callout-left .callout-line { right: 0; transform-origin: right; }
-.callout-right .callout-line { left: 0; transform-origin: left; }
-.callout p {
-  position: absolute;
-  top: 0;
-  margin: 0;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  white-space: nowrap;
-  font-size: 0.9rem;
-  line-height: 1.35;
-}
-.callout-left p { right: calc(var(--len) + 0.85rem); text-align: right; }
-.callout-right p { left: calc(var(--len) + 0.85rem); }
-.callout strong { font-weight: 600; color: var(--bone); }
-.hero-facts { display: none; }
-.callout p span { color: var(--smoke); }
-
 /* Load sequence: name rises out of its line, photo settles in */
 .js .rise { transform: translateY(105%); }
-.js .hero-me { opacity: 0; }
-.js .callout { opacity: 0; }
-.js .callout-line { transform: scaleX(0); }
+.js .hero-me,
+.js .hero-facts { opacity: 0; }
 
 .is-loaded .rise {
   transform: translateY(0);
@@ -222,18 +198,11 @@ a { color: inherit; }
   opacity: 1;
   transition: opacity 1.4s var(--ease) 0.35s;
 }
-.is-loaded .callout {
+.is-loaded .hero-facts {
   opacity: 1;
-  transition: opacity 0.6s ease 1.1s;
+  transition: opacity 1s ease 1s;
 }
-.is-loaded .callout-line {
-  transform: scaleX(1);
-  transition: transform 0.9s var(--ease) 1.2s;
-}
-.is-loaded .callout:nth-of-type(2),
-.is-loaded .callout:nth-of-type(2) .callout-line { transition-delay: 1.35s; }
-.is-loaded .callout:nth-of-type(3),
-.is-loaded .callout:nth-of-type(3) .callout-line { transition-delay: 1.5s; }
+
 
 /* Sections */
 .section {
@@ -647,23 +616,14 @@ a { color: inherit; }
   .nav { justify-content: flex-end; }
 
   .hero-figure { left: 50%; width: 138%; height: auto; bottom: 0; }
-  .callout { display: none; }
   .hero-facts {
-    position: absolute;
-    z-index: 3;
-    top: calc(5rem + 2 * 0.84 * clamp(2.6rem, 12.6vw, 6rem) + 1.5rem);
-    left: var(--gutter);
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-    margin: 0;
-    padding: 0 0 0 0.9rem;
-    list-style: none;
-    border-left: 1px solid var(--accent);
-    font-size: 0.85rem;
-    color: var(--smoke);
+    top: calc(5rem + 2 * 0.84 * clamp(2.6rem, 12.6vw, 6rem) + 1.25rem);
+    bottom: auto;
+    width: auto;
+    right: var(--gutter);
+    font-size: 0.88rem;
   }
-  .hero-facts strong { color: var(--bone); font-weight: 600; margin-right: 0.35rem; }
+  .hero-facts li { padding: 0.4rem 0; }
   .hero-name {
     z-index: 1;
     font-size: clamp(2.6rem, 12.6vw, 6rem);
@@ -699,6 +659,5 @@ a { color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   .js .rise { transform: none; transition: none; }
-  .js .hero-me, .js .callout { opacity: 1; transition: none; }
-  .js .callout-line { transform: none; transition: none; }
+  .js .hero-me, .js .hero-facts { opacity: 1; transition: none; }
 }
