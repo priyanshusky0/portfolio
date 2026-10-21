@@ -598,6 +598,76 @@ a { color: inherit; }
 }
 .contact-links a { color: var(--smoke); text-underline-offset: 0.25em; }
 .contact-links a:hover { color: var(--bone); }
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 3rem clamp(2rem, 6vw, 6rem);
+  align-items: start;
+}
+.contact-lede {
+  margin: 0 0 1.75rem;
+  max-width: 34ch;
+  color: var(--smoke);
+}
+
+/* Contact form: quiet underlined fields */
+.honeypot { display: none; }
+.contact-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem 2rem;
+}
+.field { display: flex; flex-direction: column; gap: 0.5rem; }
+.field-wide { grid-column: 1 / -1; }
+.field label { color: var(--smoke); font-size: 0.9rem; }
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 0.6rem 0;
+  font: inherit;
+  font-size: 1.05rem;
+  color: var(--bone);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(232, 236, 230, 0.25);
+  border-radius: 0;
+  transition: border-color 0.2s;
+}
+.field textarea { resize: vertical; min-height: 7rem; }
+.field select { cursor: pointer; }
+.field select option { background: var(--panel); color: var(--bone); }
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-bottom-color: var(--accent);
+}
+.form-foot {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+}
+.form-send {
+  padding: 0.9rem 1.75rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--bone);
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s var(--ease);
+}
+.form-send:hover { background: var(--accent); }
+.form-send:active { transform: scale(0.98); }
+.form-send:disabled { opacity: 0.6; cursor: progress; }
+.form-status { margin: 0; color: var(--smoke); font-size: 0.95rem; }
+.form-status.is-ok { color: var(--accent); }
+.form-status.is-error { color: #f0a58f; }
+
 .contact-foot {
   margin: clamp(5rem, 14vh, 9rem) 0 0;
   padding-top: 1.25rem;
@@ -615,6 +685,7 @@ a { color: inherit; }
   .job-logo-mark span { font-size: 0.95rem; }
   .job-company { margin: 0; }
   .feature, .feature-biomed { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
   .collage { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .shot-trek, .shot-lab, .shot-sih, .shot-ugc, .shot-run { grid-column: auto; margin-top: 0; }
   .shot-sih, .shot-ugc { grid-column: 1 / -1; }
@@ -666,6 +737,7 @@ a { color: inherit; }
   .card { scroll-snap-align: center; min-height: 26rem; }
 
   .prs a { grid-template-columns: 1fr auto; gap: 0.35rem 1rem; }
+  .contact-form { grid-template-columns: 1fr; }
   .pr-repo { grid-column: 1 / -1; }
 }
 

@@ -17,6 +17,38 @@
   const shots = [...document.querySelectorAll("[data-speed]")];
   const wide = window.matchMedia("(min-width: 901px)");
 
+  // Contact form: send in the background and confirm on the page.
+  // Without JS it falls back to a normal POST to FormSubmit.
+  const form = document.querySelector(".contact-form");
+  if (form && window.fetch) {
+    const status = form.querySelector(".form-status");
+    const send = form.querySelector(".form-send");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      send.disabled = true;
+      send.textContent = "Sending…";
+      status.className = "form-status";
+      status.textContent = "";
+      try {
+        const res = await fetch(form.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: new FormData(form),
+        });
+        if (!res.ok) throw new Error(res.status);
+        form.reset();
+        status.classList.add("is-ok");
+        status.textContent = "Message sent. I'll get back to you soon.";
+      } catch {
+        status.classList.add("is-error");
+        status.textContent = "That didn't go through. Email me directly at priyanshu.student18@gmail.com.";
+      } finally {
+        send.disabled = false;
+        send.textContent = "Send message";
+      }
+    });
+  }
+
   // Click a photo or certificate to see it full size
   const lightbox = document.querySelector(".lightbox");
   if (lightbox && lightbox.showModal) {

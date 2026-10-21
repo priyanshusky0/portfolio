@@ -297,11 +297,48 @@
 
   <footer class="contact" id="contact">
     <h2 class="contact-title">Let's work together</h2>
-    <a class="contact-mail" href="mailto:priyanshu.student18@gmail.com">priyanshu.student18@gmail.com</a>
-    <ul class="contact-links">
-      <li><a href="https://www.linkedin.com/in/priyanshu-kumar-58b095325">LinkedIn</a></li>
-      <li><a href="https://github.com/priyanshusky0">GitHub</a></li>
-    </ul>
+    <div class="contact-grid">
+      <div class="contact-direct">
+        <p class="contact-lede">Internships, roles, research or a project idea. Send a note and I'll reply within a couple of days.</p>
+        <a class="contact-mail" href="mailto:priyanshu.student18@gmail.com">priyanshu.student18@gmail.com</a>
+        <ul class="contact-links">
+          <li><a href="https://www.linkedin.com/in/priyanshu-kumar-58b095325">LinkedIn</a></li>
+          <li><a href="https://github.com/priyanshusky0">GitHub</a></li>
+        </ul>
+      </div>
+
+      <form class="contact-form" action="https://formsubmit.co/priyanshu.student18@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New message from your portfolio">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field field-wide">
+          <label for="f-topic">What's it about?</label>
+          <select id="f-topic" name="topic">
+            <option>Internship or full-time role</option>
+            <option>Freelance project</option>
+            <option>Research collaboration</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field field-wide">
+          <label for="f-message">Message</label>
+          <textarea id="f-message" name="message" rows="5" required></textarea>
+        </div>
+        <div class="form-foot">
+          <button class="form-send" type="submit">Send message</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
     <p class="contact-foot">New Delhi, India</p>
   </footer>
 
