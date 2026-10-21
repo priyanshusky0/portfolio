@@ -124,27 +124,6 @@ a { color: inherit; }
   pointer-events: none;
 }
 
-.hero-intro,
-.hero-now {
-  position: absolute;
-  z-index: 3;
-  top: clamp(6rem, 18vh, 10rem);
-  margin: 0;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: var(--smoke);
-}
-.hero-intro {
-  left: var(--gutter);
-  max-width: 31ch;
-  color: var(--bone);
-}
-.hero-now {
-  right: var(--gutter);
-  text-align: right;
-}
-.hero-now strong { color: var(--bone); font-weight: 500; }
-
 .hero-name {
   position: absolute;
   z-index: 1;
@@ -182,8 +161,6 @@ a { color: inherit; }
 /* Load sequence: name rises out of its line, photo settles in */
 .js .rise { transform: translateY(105%); }
 .js .hero-me { opacity: 0; }
-.js .hero-intro,
-.js .hero-now { opacity: 0; }
 
 .is-loaded .rise {
   transform: translateY(0);
@@ -193,11 +170,6 @@ a { color: inherit; }
 .is-loaded .hero-me {
   opacity: 1;
   transition: opacity 1.4s var(--ease) 0.35s;
-}
-.is-loaded .hero-intro,
-.is-loaded .hero-now {
-  opacity: 1;
-  transition: opacity 1s ease 0.8s;
 }
 
 /* Sections */
@@ -549,8 +521,6 @@ a { color: inherit; }
   .nav-home { display: none; }
   .nav { justify-content: flex-end; }
 
-  .hero-intro { top: 5rem; max-width: none; right: var(--gutter); font-size: 0.95rem; }
-  .hero-now { display: none; }
   .hero-me { left: 50%; height: 74%; bottom: -6%; }
   .hero-name {
     z-index: 3;
@@ -591,5 +561,5 @@ a { color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   .js .rise { transform: none; transition: none; }
-  .js .hero-me, .js .hero-intro, .js .hero-now { opacity: 1; transition: none; }
+  .js .hero-me { opacity: 1; transition: none; }
 }
