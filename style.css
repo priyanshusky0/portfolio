@@ -445,6 +445,7 @@ a { color: inherit; }
   grid-template-columns: 7rem 1fr;
   grid-template-areas: "place name" "place detail";
   gap: 0.15rem 1.5rem;
+  align-content: start;
   padding: 2rem 1.5rem 0 0;
 }
 .wins-more li + li { padding-left: 1.5rem; border-left: 1px solid var(--line); }
