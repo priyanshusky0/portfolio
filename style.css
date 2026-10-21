@@ -281,16 +281,19 @@ a { color: inherit; }
   border-radius: 6px;
 }
 .job-logo img { width: 100%; height: 100%; object-fit: contain; }
-.job-logo-text {
-  background: var(--panel);
-  border: 1px solid var(--line);
+.job-logo-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
 }
-.job-logo-text { display: grid; place-items: center; }
-.job-logo-text span {
-  font-size: 1.6rem;
+.job-logo-mark img { width: auto; height: 78%; }
+.job-logo-mark span {
+  color: #1d1b4f;
+  font-size: 1.55rem;
   font-weight: 700;
-  font-variation-settings: "wdth" 110;
   letter-spacing: -0.03em;
+  white-space: nowrap;
 }
 .job-company {
   display: flex;
@@ -593,6 +596,8 @@ a { color: inherit; }
   .job { grid-template-columns: 1fr; }
   .job-side { position: static; display: grid; grid-template-columns: 9rem 1fr; gap: 0 1.25rem; align-items: center; }
   .job-logo { grid-row: span 2; height: 4.5rem; margin: 0; padding: 0.6rem 0.8rem; }
+  .job-logo-mark { gap: 0.4rem; }
+  .job-logo-mark span { font-size: 0.95rem; }
   .job-company { margin: 0; }
   .feature, .feature-biomed { grid-template-columns: 1fr; }
   .feature-flip .frame { order: 0; }
