@@ -405,6 +405,9 @@ a { color: inherit; }
 .frame:hover img { filter: brightness(1.08); }
 .frame-tall { aspect-ratio: 4 / 5; }
 .frame-wide { aspect-ratio: 3 / 2; }
+/* Certificates are shown whole: no crop, no drift */
+.frame-cert { background: transparent; }
+.frame-cert img { height: auto; }
 
 .feature-text h3 {
   margin: 0 0 1rem;
@@ -437,7 +440,6 @@ a { color: inherit; }
   padding: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   border-top: 1px solid var(--line);
 }
 .wins-more li {
