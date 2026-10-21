@@ -12,6 +12,8 @@
   const projects = document.querySelector(".projects");
   const track = document.querySelector(".projects-track");
   const framed = [...document.querySelectorAll("[data-parallax]")];
+  const shots = [...document.querySelectorAll("[data-speed]")];
+  const wide = window.matchMedia("(min-width: 901px)");
 
   // Click a photo or certificate to see it full size
   const lightbox = document.querySelector(".lightbox");
@@ -79,6 +81,15 @@
       if (rect.bottom < 0 || rect.top > vh) continue;
       const progress = (vh - rect.top) / (vh + rect.height);
       img.style.transform = `translate3d(0, ${-progress * 13}%, 0)`;
+    }
+
+    // Collage photos move at different speeds, so they seem to sit at different depths
+    for (const el of shots) {
+      if (!wide.matches || reduce) { el.style.translate = ""; continue; }
+      const rect = el.getBoundingClientRect();
+      if (rect.bottom < -200 || rect.top > vh + 200) continue;
+      const fromCenter = rect.top + rect.height / 2 - vh / 2;
+      el.style.translate = `0 ${fromCenter * parseFloat(el.dataset.speed)}px`;
     }
 
     if (!phone.matches) {

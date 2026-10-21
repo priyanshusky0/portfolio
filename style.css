@@ -522,6 +522,31 @@ a { color: inherit; }
 }
 .text-link:hover { background-size: 0% 1px; background-position: right bottom; }
 
+/* Off the clock: a loose collage, each photo drifting at its own speed */
+.collage {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 3rem) clamp(1rem, 2vw, 2rem);
+  align-items: start;
+}
+.shot { margin: 0; will-change: transform; }
+.shot .frame { aspect-ratio: 4 / 5; }
+.shot-sih .frame, .shot-ugc .frame { aspect-ratio: 4 / 3; }
+.shot-lab { grid-column: 1 / span 4; }
+.shot-sih { grid-column: 6 / span 7; margin-top: 6rem; }
+.shot-ugc { grid-column: 2 / span 6; margin-top: 2rem; }
+.shot-run { grid-column: 9 / span 4; margin-top: 1rem; }
+.shot figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-top: 0.9rem;
+  max-width: 40ch;
+  color: var(--smoke);
+  font-size: 0.92rem;
+}
+.shot figcaption strong { color: var(--bone); font-weight: 600; font-size: 1rem; }
+
 /* Lightbox for photos and certificates */
 .lightbox {
   width: min(94vw, 1200px);
@@ -600,6 +625,9 @@ a { color: inherit; }
   .job-logo-mark span { font-size: 0.95rem; }
   .job-company { margin: 0; }
   .feature, .feature-biomed { grid-template-columns: 1fr; }
+  .collage { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .shot-lab, .shot-sih, .shot-ugc, .shot-run { grid-column: auto; margin-top: 0; }
+  .shot-sih, .shot-ugc { grid-column: 1 / -1; }
   .feature-flip .frame { order: 0; }
   .feature-biomed .frame-tall { max-width: 32rem; }
 }
