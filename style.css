@@ -114,7 +114,6 @@ a { color: inherit; }
 .icon-link { display: inline-flex; align-items: center; gap: 0.5em; }
 .nav-icon a { display: inline-flex; padding: 0.2rem; }
 .nav-icon .icon { width: 1.05rem; height: 1.05rem; }
-.pr-repo { display: inline-flex; align-items: center; gap: 0.5em; }
 
 /* Hero */
 .hero {
@@ -431,30 +430,6 @@ a { color: inherit; }
   font-size: 0.9rem;
 }
 
-/* Open source */
-.prs { margin: 0; padding: 0; list-style: none; }
-.prs a {
-  display: grid;
-  grid-template-columns: 14rem 1fr auto;
-  gap: 1.5rem;
-  align-items: baseline;
-  padding: 1.35rem 0;
-  border-top: 1px solid var(--line);
-  text-decoration: none;
-  transition: padding 0.4s var(--ease), color 0.2s;
-}
-.prs li:last-child a { border-bottom: 1px solid var(--line); }
-.prs a:hover { padding-left: 1rem; }
-.prs a:hover .pr-title { color: #fff; }
-.pr-repo { color: var(--smoke); font-size: 0.92rem; }
-.pr-title {
-  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
-  font-weight: 500;
-  color: #e2e4df;
-}
-.pr-state { font-size: 0.88rem; color: var(--smoke); }
-.pr-state.is-open { color: var(--accent); }
-
 /* Recognition: photo-led features */
 .feature {
   display: grid;
@@ -765,9 +740,7 @@ a { color: inherit; }
   }
   .card { scroll-snap-align: center; min-height: 26rem; }
 
-  .prs a { grid-template-columns: 1fr auto; gap: 0.35rem 1rem; }
   .contact-form { grid-template-columns: 1fr; }
-  .pr-repo { grid-column: 1 / -1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
